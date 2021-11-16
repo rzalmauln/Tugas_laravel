@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProdukController;
 use Illuminate\Support\Facades\Route;
+use \App\Models\Produk;
+use JetBrains\PhpStorm\Pure;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,4 +81,14 @@ Route::get('/flot', function () {
 
 
 
-// Example
+// Table
+// Route::get('/table-data', function () {
+//     return view('pages/tables/data', [
+//         'title' => 'AdminLTE 3 | Data Table',
+//         'produk' => [ProdukController::class, 'index']
+//     ]);
+// });
+
+Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
+Route::get('/produk/tambah-produk', [ProdukController::class, 'create'])->name('tambahProduk');
+Route::get('/produk/delete/{id}', [ProdukController::class, 'destroy'])->name('hapusProduk');
